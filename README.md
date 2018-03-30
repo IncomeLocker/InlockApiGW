@@ -3,6 +3,7 @@ version: 0.1
 
 API categories:<br>
  <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a>
+ <a href='#collathandler' id='collathandler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
  
 
 # Create User's Account (#usermgmt)
@@ -56,6 +57,75 @@ Provide necessary information of Account to be created.
 ```json
 {
     "result": "user already exists"
+}
+```
+
+### Or
+
+**Condition** : If fields are missed.
+
+**Code** : `400 BAD REQUEST`
+
+**Content example**
+
+```json
+{
+    "name": [
+        "This field is required."
+    ]
+}
+```
+
+# Lock Collateral (#collathandler)
+
+Reserve collateral from user's balance and set the required parameters for further collateral management.
+
+**URL** : `https://api.inlock.io/inlock/api/v0.1/lockCollateral`
+
+**Method** : `POST`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+**Data constraints**
+
+Provide necessary information of Account to be created.
+
+```json
+{
+    "coinid": "[int, based on /balance request's result]",
+    "amount": "[float, amount of locked collateral]",
+    "margincall": "[int, percentage of margin call after successful contracting]",
+}
+```
+
+## Success Response
+
+**Condition** : If everything is OK and an Account didn't exist for this User.
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+    "result": "ok"
+}
+```
+
+## Error Responses
+
+**Condition** : Invalid coin referer or cannot mapped to requested user!
+**Condition** : Not enought available balance to lock collateral
+**Condition** : Internal error (invalid price information), please contact InLock support!
+
+**Code** : `400 BAD REQUEST`
+
+**Content** : 
+```json
+{
+    "lockCollateral": "*message*"
 }
 ```
 

@@ -20,10 +20,10 @@ Provide necessary information of Account to be created.
 
 ```json
 {
-    "username": "[unicode 64 chars max]"
-    "email": "[standard email format]"
-    "greetname": "[short greating name, 28 chars max]"
-    "password": "[hashed password]"
+    "username": "[unicode 64 chars max]",
+    "email": "[standard email format]",
+    "greetname": "[short greating name, 28 chars max]",
+    "password": "[hashed password]",
     "kyctoken": "[preauthentication KYC token]"
 }
 ```

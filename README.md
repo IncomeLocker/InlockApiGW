@@ -2,11 +2,11 @@
 version: 0.1
 
 API categories:<br>
- <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a><br>
- <a href='#collat-handler' id='collat-handler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
+<a href='#usermgmt' name='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a><br>
+<a href='#collat-handler' name='collat-handler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
  
 
-# Create User's Account {#usermgmt}
+# Create User's Account (#usermgmt)
 
 Create an Account for the authenticated User if an Account for that User does
 not already exist. Each User can only have one Account.

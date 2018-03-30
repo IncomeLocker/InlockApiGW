@@ -3,7 +3,7 @@ version: 0.1
 
 API categories:<br>
 <a href='#create-users-account' name='create-users-account'>User management (registration, login, etc.)</a><br>
-<a href='#lock-collateral' name='lock-collateral'>Collateral Inventory (preparation for contracting)</a>
+<a href='#list-collaterals' name='list-collaterals'>Collateral Inventory (preparation for contracting)</a>
  
 
 # [](#create-users-account)Create User's Account
@@ -78,7 +78,7 @@ Provide necessary information of Account to be created.
 
 # [](#list-collaterals)List Collaterals 
 
-Reserve collateral from user's balance and set the required parameters for further collateral management.
+List all existing locked collateras for authenticated user
 
 **URL** : `https://api.inlock.io/inlock/api/v0.1/listCollaterals`
 
@@ -105,14 +105,14 @@ List all locked colleterals of authenticated user
     "collaterals": [
         {
           "collat_id": 10, 
-          "status": "prepared"
+          "status": "prepared",
           "collat_mgmt_id": 0, 
           "created": "Fri, 30 Mar 2018 13:46:52 GMT", 
           "lastmodified": "Fri, 30 Mar 2018 13:46:52 GMT", 
           "margincall": 90.0,                                      ### margin call percentage(%)
           "cvalue_usd": 32059.8,                                   ### collateral's value in USD
           "c1_cointype": 2,                                        ### coin ID
-          "c1_amount": 81.0,                                       ### amount
+          "c1_amount": 81.0                                        ### amount
         }, 
     ]
 }

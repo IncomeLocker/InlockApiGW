@@ -217,3 +217,70 @@ Provide necessary information of Account to be created.
 }
 ```
 
+# [](#cancel-collateral)Cancel Collateral 
+
+Cancel an existing and 'prepared' stated collateral. 
+
+**URL** : `https://api.inlock.io/inlock/api/v0.1/cancelCollateral`
+
+**Method** : `POST`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+**Data constraints**
+
+Provide necessary information of Account to be created.
+
+```json
+{
+    "cid": "[int, collateral id]"
+}
+```
+
+## Success Response
+
+**Condition** : Existing collateral succesfully canceled. Pending balance also refunded and available for User
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+    "result": "ok"
+}
+```
+
+## Error Responses
+
+**Condition** : There is no any collateral for requested user<br>
+**Condition** : Cannot found balance of the collateral owner
+**Condition** : Cannot cancel running or terminated collateral!<br>
+**Condition** : Collateral is not found, or maybe invalid
+
+**Code** : `400 BAD REQUEST`
+
+**Content** : 
+```json
+{
+    "cancelCollateral": "*message*"
+}
+```
+
+### Or
+
+**Condition** : If fields are missed.
+
+**Code** : `400 BAD REQUEST`
+
+**Content example**
+
+```json
+{
+    "name": [
+        "This field is required."
+    ]
+}
+```

@@ -27,3 +27,47 @@ Provide necessary information of Account to be created.
     "kyctoken": "[preauthentication KYC token]"
 }
 ```
+
+## Success Response
+
+**Condition** : If everything is OK and an Account didn't exist for this User.
+
+**Code** : `201 CREATED`
+
+**Content example**
+
+```json
+{
+    "result": "ok"
+}
+```
+
+## Error Responses
+
+**Condition** : If Account already exists for User.
+
+**Code** : `400 BAD REQUEST`
+
+**Content** : 
+```json
+{
+    "result": "user already exists"
+}
+```
+
+### Or
+
+**Condition** : If fields are missed.
+
+**Code** : `400 BAD REQUEST`
+
+**Content example**
+
+```json
+{
+    "name": [
+        "This field is required."
+    ]
+}
+```
+

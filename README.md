@@ -2,7 +2,7 @@
 version: 0.1
 
 API categories:<br>
- <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a>
+ <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a><br>
  <a href='#collathandler' id='collathandler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
  
 
@@ -116,8 +116,8 @@ Provide necessary information of Account to be created.
 
 ## Error Responses
 
-**Condition** : Invalid coin referer or cannot mapped to requested user!
-**Condition** : Not enought available balance to lock collateral
+**Condition** : Invalid coin referer or cannot mapped to requested user!<br>
+**Condition** : Not enought available balance to lock collateral<br>
 **Condition** : Internal error (invalid price information), please contact InLock support!
 
 **Code** : `400 BAD REQUEST`

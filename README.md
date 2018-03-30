@@ -76,6 +76,78 @@ Provide necessary information of Account to be created.
 }
 ```
 
+# [](#list-collaterals)List Collaterals 
+
+Reserve collateral from user's balance and set the required parameters for further collateral management.
+
+**URL** : `https://api.inlock.io/inlock/api/v0.1/listCollaterals`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+**Data constraints**
+
+List all locked colleterals of authenticated user
+
+## Success Response
+
+**Condition** : If everything is OK and an Account didn't exist for this User.
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+    "collaterals": [
+        {
+          "collat_id": 10, 
+          "status": "prepared"
+          "collat_mgmt_id": 0, 
+          "created": "Fri, 30 Mar 2018 13:46:52 GMT", 
+          "lastmodified": "Fri, 30 Mar 2018 13:46:52 GMT", 
+          "margincall": 90.0,                                      ### margin call percentage(%)
+          "cvalue_usd": 32059.8,                                   ### collateral's value in USD
+          "c1_cointype": 2,                                        ### coin ID
+          "c1_amount": 81.0,                                       ### amount
+        }, 
+    ]
+}
+```
+
+
+## Error Responses
+
+**Condition** : There is no any collateral for requested user
+
+**Code** : `400 BAD REQUEST`
+
+**Content** : 
+```json
+{
+    "lockCollateral": "*message*"
+}
+```
+
+### Or
+
+**Condition** : If fields are missed.
+
+**Code** : `400 BAD REQUEST`
+
+**Content example**
+
+```json
+{
+    "name": [
+        "This field is required."
+    ]
+}
+```
+
 # [](#lock-collateral)Lock Collateral 
 
 Reserve collateral from user's balance and set the required parameters for further collateral management.

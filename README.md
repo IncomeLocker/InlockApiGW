@@ -76,7 +76,7 @@ Provide necessary information of Account to be created.
 }
 ```
 
-#[](#collat-handler)Lock Collateral 
+# [](#collat-handler)Lock Collateral 
 
 Reserve collateral from user's balance and set the required parameters for further collateral management.
 

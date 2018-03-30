@@ -2,8 +2,8 @@
 version: 0.1
 
 API categories:<br>
-<a href='#usermgmt' name='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a><br>
-<a href='#collat-handler' name='collat-handler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
+<a name='usermgmt'>User management (registration, login, etc.)</a><br>
+<a name='collat-handler'>Collateral Inventory (preparation for contracting)</a>
  
 
 # Create User's Account (#usermgmt)

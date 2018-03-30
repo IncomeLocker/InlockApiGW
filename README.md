@@ -3,7 +3,7 @@ version: 0.1
 
 API categories:<br>
  <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a><br>
- <a href='#collathandler' id='collathandler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
+ <a href='#collat-handler' id='collat-handler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
  
 
 # Create User's Account {#usermgmt}
@@ -76,7 +76,7 @@ Provide necessary information of Account to be created.
 }
 ```
 
-# Lock Collateral {#collathandler}
+# Lock Collateral (#collat-handler)
 
 Reserve collateral from user's balance and set the required parameters for further collateral management.
 

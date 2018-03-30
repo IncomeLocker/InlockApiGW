@@ -1,7 +1,11 @@
 # IncomeApiGW - Income Locker frontend Application Programable Interface 
 version: 0.1
 
-# Create User's Account
+API categories:<br>
+ <a href='#usermgmt' id='usermgmt' class='anchor' aria-hidden='true'>User management (registration, login, etc.)</a>
+ 
+
+# Create User's Account (#usermgmt)
 
 Create an Account for the authenticated User if an Account for that User does
 not already exist. Each User can only have one Account.

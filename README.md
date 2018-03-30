@@ -6,7 +6,7 @@ API categories:<br>
  <a href='#collathandler' id='collathandler' class='anchor' aria-hidden='true'>Collateral Inventory (preparation for contracting)</a>
  
 
-# Create User's Account (#usermgmt)
+# Create User's Account {#usermgmt}
 
 Create an Account for the authenticated User if an Account for that User does
 not already exist. Each User can only have one Account.
@@ -76,7 +76,7 @@ Provide necessary information of Account to be created.
 }
 ```
 
-# Lock Collateral (#collathandler)
+# Lock Collateral {#collathandler}
 
 Reserve collateral from user's balance and set the required parameters for further collateral management.
 

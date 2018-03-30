@@ -16,14 +16,14 @@ not already exist. Each User can only have one Account.
 
 **Data constraints**
 
-Provide name of Account to be created.
+Provide necessary information of Account to be created.
 
 ```json
 {
     "username": "[unicode 64 chars max]"
-    "email": "[unicode 64 chars max]"
-    "greetname": "[unicode 64 chars max]"
-    "password": "[unicode 64 chars max]"
-    "kyctoken": "[unicode 64 chars max]"
+    "email": "[standard email format]"
+    "greetname": "[short greating name, 28 chars max]"
+    "password": "[hashed password]"
+    "kyctoken": "[preauthentication KYC token]"
 }
 ```

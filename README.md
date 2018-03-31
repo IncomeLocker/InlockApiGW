@@ -5,7 +5,7 @@ RESTful API for Income Locker (inlock.io) frontend. Based on flask microframewor
 
 API categories:<br>
 <a href='#create-users-account' name='create-users-account'>User management (registration, login, etc.)</a><br>
-<a href='#list-collaterals' name='list-collaterals'>Collateral Inventory (preparation for contracting)</a>
+<a href='#list-collaterals' name='list-collaterals'>Collateral Inventory (preparation for contracting)</a><br>
 Request handling<br>
 Offer handling (borrower side)<br>
 Offer accepting (borrower side)<br>

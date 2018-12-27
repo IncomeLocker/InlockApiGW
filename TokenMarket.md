@@ -5,10 +5,11 @@ RESTful API for INLOCK (INLOCK.io) TokenMarket frontend. Default output is prett
 
 ##API calls list<br>
 **Public API requests for TokenMarket information:**
-<a href='#privategettokenmarket' name='get-token-market'>Private:getTokenMarket</a> :memo: , 
-<a href='#privateselltoken' name='sell-token'>Private:sellToken</a> :memo: , 
-<a href='#privatebuytoken' name='buy-token'>Private:buyToken</a> :memo: ,
-<a href='#privatecancelselltoken' name='cancel-sell-token'>Private:cancelsellToken</a> :memo: ,
+<a href='#privategettokenmarket' name='get-token-market'>Private:getTokenMarket</a>, 
+<a href='#privateselltoken' name='sell-token'>Private:sellToken</a>, 
+<a href='#privatebuytoken' name='buy-token'>Private:buyToken</a>,
+<a href='#privatecancelselltoken' name='cancel-sell-token'>Private:cancelsellToken</a>,
+<a href='#privatelistmytokenmarketorders' name='list-my-tokenmarket-orders'>Private:listMyTokenmarketOrders</a>,
 <br>
 
 ## Authentication
@@ -196,6 +197,59 @@ Provide the trading pair and interval to be requested.
       "orderid": 11, 
       "reason": "canceled", 
       "remaining_amount": 72.15000000
+    }
+  }
+}
+```
+
+**Error results**<br>
+EGEN_badreq_E001 / Bad request or missing field, please check the API documentation<br>
+
+# [](#privatelistmytokenmarketorders)Private:listMyTokenmarketOrders
+
+Cancel an existing ILK token sell order
+
+**URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/listMyTokenmarketOrders`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Data constraints**
+
+Provide the trading pair and interval to be requested.
+
+```json
+{
+    "pair"    : "[int, identifier of tradingpair]",
+}
+```
+
+**Success result**
+
+```json
+{
+  "error": {
+    "code": "none", 
+    "message": "none"
+  },
+  "result": {
+    "status": "ok", 
+    "listMyTokenmarketOrders": {
+      "my_orders": {
+        "marketid": 50, 
+        "market": "ETHILK", 
+        "sell": [
+          {
+            "timestamp": "2018-12-26 23:43:18", 
+            "ttl_minutes": 405, 
+            "remaining_amount": 80.77000000, 
+            "orig_amount": 100.00000000, 
+            "price": 0.00035000, 
+            "status": "partiallysold"
+          }
+        ]
+      }
     }
   }
 }

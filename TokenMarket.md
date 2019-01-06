@@ -1,7 +1,7 @@
 # API documentation for INLOCK:TokenMarket
 version: 1.0
 
-RESTful API for INLOCK (INLOCK.io) TokenMarket frontend. Default output is pretty printed JSON.
+RESTful API for INLOCK (INLOCK.io) TokenMarket frontend. Default output is NON pretty printed JSON.
 
 ##API calls list<br>
 **Public API requests for TokenMarket information:**
@@ -10,6 +10,7 @@ RESTful API for INLOCK (INLOCK.io) TokenMarket frontend. Default output is prett
 <a href='#privatebuytoken' name='buy-token'>Private:buyToken</a>,
 <a href='#privatecancelselltoken' name='cancel-sell-token'>Private:cancelsellToken</a>,
 <a href='#privatelistmytokenmarketorders' name='list-my-tokenmarket-orders'>Private:listMyTokenmarketOrders</a>,
+<a href='#privatelistmytokenmarkettrades' name='list-my-tokenmarket-trades'>Private:listMyTokenmarketTrades</a>,
 <br>
 
 ## Authentication
@@ -175,7 +176,7 @@ Cancel an existing ILK token sell order
 
 **Data constraints**
 
-Provide the trading pair and interval to be requested.
+Provide the orderid to be requested.
 
 ```json
 {
@@ -207,7 +208,7 @@ EGEN_badreq_E001 / Bad request or missing field, please check the API documentat
 
 # [](#privatelistmytokenmarketorders)Private:listMyTokenmarketOrders
 
-Cancel an existing ILK token sell order
+List currently running token sales on selected trading pair
 
 **URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/listMyTokenmarketOrders`
 
@@ -217,7 +218,7 @@ Cancel an existing ILK token sell order
 
 **Data constraints**
 
-Provide the trading pair and interval to be requested.
+Provide the trading pair to be requested.
 
 ```json
 {
@@ -257,3 +258,57 @@ Provide the trading pair and interval to be requested.
 
 **Error results**<br>
 EGEN_badreq_E001 / Bad request or missing field, please check the API documentation<br>
+
+
+# [](#privatelistmytokenmarkettrades)Private:listMyTokenmarketTrades
+
+List history of my token trades
+
+**URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/listMyTokenmarketTrades`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Data constraints**
+
+Provide the trading pair to be requested.
+
+```json
+{
+    "pair"    : "[int, identifier of tradingpair]",
+}
+```
+
+**Success result**
+
+```json
+{
+  "error": {
+    "code": "none", 
+    "message": "none"
+  },
+  "result": {
+  "status":"ok",
+  "listMyTokenmarketTrades": {
+    "marketid":50,
+    "market":"ETHILK",
+    "trades": [
+      {
+        "timestamp":"2019-01-06 01:11:25",
+        "ask_amount":0.05000000,
+        "fulfilled_amount":0.05000000,
+        "price":0.00004110,
+        "avg_unit_price":0.00082200,
+        "avg_unit_price_in_usd":0.12694968,
+        "status":"filled"
+      }
+    ]
+  }
+}
+```
+
+**Error results**<br>
+EGEN_badreq_E001 / Bad request or missing field, please check the API documentation<br>
+
+

@@ -11,6 +11,7 @@ RESTful API for INLOCK (INLOCK.io) TokenMarket frontend. Default output is NON p
 <a href='#privatecancelselltoken' name='cancel-sell-token'>Private:cancelsellToken</a>,
 <a href='#privatelistmytokenmarketorders' name='list-my-tokenmarket-orders'>Private:listMyTokenmarketOrders</a>,
 <a href='#privatelistmytokenmarkettrades' name='list-my-tokenmarket-trades'>Private:listMyTokenmarketTrades</a>,
+<a href='#privatelistmytokenmarketsales' name='list-my-tokenmarket-sales'>Private:listMyTokenmarketSales</a>,
 <br>
 
 ## Authentication
@@ -262,7 +263,7 @@ EGEN_badreq_E001 / Bad request or missing field, please check the API documentat
 
 # [](#privatelistmytokenmarkettrades)Private:listMyTokenmarketTrades
 
-List history of my token trades
+List history of my bought token trades
 
 **URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/listMyTokenmarketTrades`
 
@@ -311,4 +312,57 @@ Provide the trading pair to be requested.
 **Error results**<br>
 EGEN_badreq_E001 / Bad request or missing field, please check the API documentation<br>
 
+# [](#privatelistmytokenmarketsales)Private:listMyTokenmarketSales
+
+List history of my sold token trades
+
+**URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/listMyTokenmarketSales`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Data constraints**
+
+Provide the trading pair to be requested.
+
+```json
+{
+    "pair"    : "[int, identifier of tradingpair]",
+    "page"    : "[int, pagination: num of page]",
+    "perPage"    : "[int, pagination: items per page]",
+}
+```
+
+**Success result**
+
+```json
+{
+  "error": {
+    "code": "none", 
+    "message": "none"
+  },
+  "result": {
+  "status":"ok",
+  "listMyTokenmarketSales": {
+    "marketid":50,
+    "market":"ETHILK",
+    "pagination":{
+        "page":2,
+        "perPage":5,
+        "total":42442
+    },
+    "trades": [
+      {
+        "timestamp":"2019-01-06 01:11:25",
+        "amount":0.05000000,
+        "price":0.00004110
+      }
+    ]
+  }
+}
+```
+
+**Error results**<br>
+EGEN_badreq_E001 / Bad request or missing field, please check the API documentation<br>
 

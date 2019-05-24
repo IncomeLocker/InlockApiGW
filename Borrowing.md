@@ -1,4 +1,4 @@
-# API documentation for INLOCK:Lending
+# API documentation for INLOCK:Borrowing/Loans
 version: 1.0
 
 RESTful API for INLOCK (INLOCK.io) borrowing frontend. Default output is NON pretty printed JSON.

@@ -34,7 +34,7 @@ Provide necessary information of lending to be requested.
 {
     "coin_id": "[integer, id of the currency]",
     "amt": "[float, amount of lending position]",
-    "apr": "[integer, value of annual percent rate]",
+    "apr": "[float, value of annual percent rate]",
     "duration": "[integer, value of lending contractible period in days]",
     "reinvest_interest": "[integer, 1 if lending is reinvestable, 0 if lending is not reinvestable]"
 }
@@ -49,7 +49,7 @@ Provide necessary information of lending to be requested.
     "message": "none"
   }, 
   "result": {
-    "newlend": {
+    "newLend": {
       "lend_id": "[integer, id of newly created lending position]"
     }, 
     "status": "ok"
@@ -70,7 +70,7 @@ Provide necessary information of lending to be requested.
 
 # Private:setReinvestInterest
 
-Set reinvestment rate 
+Set reinvestment
 
 **URL** : `https://inlock.io/inlock/api/v0.1/private/setReinvestInterest`
 
@@ -122,6 +122,12 @@ Get running lends
 
 **Auth required** : YES
 
+**Data constraints**
+
+```
+    /private/getRunningLends?page={page_num}&perPage={per_page}
+```
+
 **Success result**
 
 ```json
@@ -140,11 +146,11 @@ Get running lends
     "lends": [
         {
           "lend_id": "[integer, id of lending position]", 
-          "apr": "[integer, value of annual percent rate]", 
-          "expiration": "[datetime, exipration date of lend]", 
-          "current_amt": "[integer, current amount]", 
-          "orig_amt": "[integer, original amount]", 
-          "allocated_amt": "[integer, allocated amount]", 
+          "apr": "[float, value of annual percent rate]", 
+          "expiration": "[string, exipration date of lend]", 
+          "current_amt": "[float, current amount]", 
+          "orig_amt": "[float, original amount]", 
+          "allocated_amt": "[float, allocated amount]", 
           "coin_id": "[integer, id of currency]"
         },
         ...
@@ -169,6 +175,12 @@ Get closed lends
 
 **Auth required** : YES
 
+**Data constraints**
+
+```
+    /private/getClosedLends?page={page_num}&perPage={per_page}
+```
+
 **Success result**
 
 ```json
@@ -186,13 +198,13 @@ Get closed lends
       }, 
     "lends": [
         {
-          "lend_id": "[integer, id of lending position]", 
-          "apr": "[integer, value of annual percent rate]", 
-          "expiration": "[datetime, exipration date of lend]", 
-          "current_amt": "[integer, current amount]", 
-          "orig_amt": "[integer, original amount]", 
-          "allocated_amt": "[integer, allocated amount]", 
-          "coin_id": "[integer, id of currency]"
+          "lend_id": "[integer, lending position id]", 
+          "apr": "[float, value of annual percent rate]", 
+          "expiration": "[string, exipration date of lend]", 
+          "current_amt": "[float, current amount]", 
+          "orig_amt": "[float, original amount]", 
+          "allocated_amt": "[float, allocated amount, if closed this value always 0]", 
+          "coin_id": "[integer, coin id]"
         },
         ...
       ]
@@ -218,12 +230,10 @@ Withdraw from lending position
 
 **Data constraints**
 
-Lend id and amount
-
 ```json
 {
     "lend_id": "[integer, id of lending position]",
-    "amount": "[integer, amount of withdrawal from lending position]"
+    "amount": "[float, amount of withdrawal from lending position]"
 }
 ```
 
@@ -237,9 +247,9 @@ Lend id and amount
   }, 
   "result": { 
     "withdrawFromLend": {
-      "withdrawed_amt": "[integer, amount withdrawn form lending position]", 
-      "remaining_amt": "[integer, remaining amount in lending position]",
-      "release_due_date": "[datetime, release due date]"
+      "withdrawed_amt": "[float, amount withdrawn form lending position]", 
+      "remaining_amt": "[float, remaining amount in lending position]",
+      "release_due_date": "[string, release due date]"
     },
     "status": "ok"
   }
@@ -258,7 +268,7 @@ Lend id and amount
 
 # Private:setLendingNotifications
 
-Set a lending notification for the user
+Set lending notification for the user
 
 **URL** : `https://inlock.io/inlock/api/v0.1/private/setLendingNotifications`
 
@@ -267,8 +277,6 @@ Set a lending notification for the user
 **Auth required** : YES
 
 **Data constraints**
-
-Provide necessary information of lending to be requested.
 
 ```json
 {
@@ -291,6 +299,7 @@ Provide necessary information of lending to be requested.
 }
 ```
 
+
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation
 * EGEN_dbresp_E001 / Backend's response is invalid, please contact support
@@ -298,7 +307,7 @@ Provide necessary information of lending to be requested.
 
 # Private:getLendingNotifications
 
-Get user lending notification
+Get user lending notification state
 
 **URL** : `https://inlock.io/inlock/api/v0.1/private/getLendingNotifications`
 
@@ -330,7 +339,7 @@ Get user lending notification
 
 # Private:getLendingContractEvents
 
-Get user lending notification
+Get lending events
 
 **URL** : `https://inlock.io/inlock/api/v0.1/private/getLendingContractEvents`
 
@@ -339,8 +348,6 @@ Get user lending notification
 **Auth required** : YES
 
 **Data constraints**
-
-Provide necessary information of lending to be requested.
 
 ```
     /private/getLendingContractEvents?lend_id={lend_id}&page={page_num}
@@ -363,9 +370,9 @@ Provide necessary information of lending to be requested.
       }, 
     "events": [
         {
-          "created": "[datetime, creation date of event]",
-          "type": "[string, event type]",
           "id": "[integer, event id]",
+          "type": "[string, event type]",
+          "created": "[string, creation date of event]",
           "params": "{**}"
         },
         ...
@@ -382,7 +389,7 @@ if event `type` is `created`
     {
         "coin_id": "[integer, id of currency]",
         "amt": "[float, amount of lending position]",
-        "apr": "[integer, value of annual percent rate]",
+        "apr": "[float, value of annual percent rate]",
         "duration": "[integer, value of lending contractible period in days]",
         "reinvest_interest": "[integer, 1 if lending is reinvestable, 0 if lending is not reinvestable]"
     }
@@ -396,7 +403,7 @@ if event `type` is `expired` or `terminated`
 if event `type` is `interest_income`
 ```json
     {
-      "amt": "[integer, amount of lending position]", 
+      "amt": "[float, amount of lending position]", 
       "coin_id": "[integer, id of currency]",
       "reinvest_interest": "[integer, 1 if lending is reinvestable, 0 if lending is not reinvestable]"
     }
@@ -405,8 +412,8 @@ if event `type` is `interest_income`
 if event `type` is `withdraw_req` or `withdraw`
 ```json
     {
-      "amt": "[integer, amount of lending position]", 
-      "coin_id": "[integer, id of currency]"
+      "amt": "[float, amount of lending position]", 
+      "coin_id": "[integer, coin id]"
     }
 ```
 
@@ -442,50 +449,57 @@ Provide necessary information of lending to be requested.
 **Success result**
 
 ```json
-
 {
-    "lend_id": "[integer, id of requested lending position]", 
-    "apr": "[integer, value of annual percentage rate]", 
-    "expiration": "[datetime, end of lending contractible period]",
-    "current_amt": "[integer, current amount of the lending]", 
-    "orig_amt": "[integer, original amount of lending position]",
-    "alloc_amt": "[integer, allocated amount of lending position]", 
-    "coin_id": "[integer, id of the currency]",
-    "duration": "[integer, value of lending contractible period in days]",
-    "creation": "[datetime, creation date of lending position]", 
-    "interest_income": "[integer, ]",
-    "reinvest_interest": "[integer, ]", 
-    "pending_withdraw": "[integer, ]",
-    "withdraw_due_date": "[datetime, ]", 
-    "chart": {
-      "amt": [
-        {
-          "t": "[integer, unix time]", 
-          "v": "[integer, ]"
-        }
-      ], 
-      "int": [
-        {
-          "t": "[integer, unix time]", 
-          "v": "[integer, ]"
-        }
-      ], 
-      "pend_int": [
-        {
-          "t": "[integer, unix time]", 
-          "v": "[integer, ]"
-        }
-      ], 
-      "alloc": [
-        {
-          "t": "[integer, unix time]", 
-          "v": "[integer, ]"
-        }
-      ],
+  "error": {
+    "code": "none", 
+    "message": "none"
+  }, 
+  "result": { 
+    "getLendDetails": {
+      "lend_id": "[integer, id of requested lending position]", 
+      "apr": "[float, value of annual percentage rate]", 
+      "expiration": "[string, end of lending contractible period]",
+      "current_amt": "[float, current amount of the lending]", 
+      "orig_amt": "[float, original amount of lending position]",
+      "alloc_amt": "[float, allocated amount of lending position]", 
+      "coin_id": "[integer, id of the currency]",
+      "duration": "[integer, value of lending contractible period in days]",
+      "creation": "[string, creation date of lending position]", 
+      "interest_income": "[float, ]",
+      "reinvest_interest": "[integer, 1 if lending is reinvestable, 0 if lending is not reinvestable]", 
+      "pending_withdraw": "[float, ]",
+      "withdraw_due_date": "[string, ]", 
+      "chart": {
+        "amt": [
+          {
+            "t": "[integer, unix timestamp]", 
+            "v": "[float, ]"
+          }
+        ], 
+        "int": [
+          {
+            "t": "[integer, unix timestamp]", 
+            "v": "[float, ]"
+          }
+        ], 
+        "pend_int": [
+          {
+            "t": "[integer, unix timestamp]", 
+            "v": "[float, ]"
+          }
+        ], 
+        "alloc": [
+          {
+            "t": "[integer, unix timestamp]", 
+            "v": "[float, ]"
+          }
+        ]
+      }
+    },
+    "status": "ok"
   }
 }
 ```
-
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation

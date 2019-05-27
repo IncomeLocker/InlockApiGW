@@ -52,24 +52,24 @@ Get orderbook of INLOCK TokenMarket for a selected trading pair.
     "code": "none", 
     "message": "none"
   },
-  "result": {
-    "status": "ok", 
-    "getTokenMarket": {
-      "orderbook": {
-        "marketid": 50, 
-        "market": "ETHILK", 
-        "sell": [
-          {
-            "timestamp": "2018-12-26 23:43:18", 
-            "amount": 100.00000000, 
-            "price": 0.00310000
-          }, 
-          {
-            "timestamp": "2018-12-26 23:43:36", 
-            "amount": 72.15000000, 
-            "price": 0.00335000
-          }
-        ]
+   "result": {
+     "status": "ok",
+     "getTokenMarket": {
+       "orderbook": {
+         "marketid": 50,
+         "market": "ETHILK",
+         "sell": [
+           {
+             "amount": "10000.00000000",
+             "price": "0.00002451",
+             "own": false
+           },
+           {
+             "amount": "38008.79303400",
+             "price": "0.00003600",
+             "own": false
+           }
+         ]
       }
     }
   }

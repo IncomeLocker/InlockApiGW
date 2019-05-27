@@ -30,11 +30,11 @@ Exceptions for the above defined rules are specified at the corresponding API de
 
 Get orderbook of INLOCK TokenMarket for a selected trading pair.
 
-**URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/public/getTokenMarket`
+**URL** : `https://prod.inlock.io:2096/inlock/api/v1.0/private/getTokenMarket`
 
 **Method** : `GET`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Data constraints**
 

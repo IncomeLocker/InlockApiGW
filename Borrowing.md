@@ -1,4 +1,4 @@
-# API documentation for INLOCK:Borrowing/Loans
+# API documentation for INLOCK:Lending
 version: 1.0
 
 RESTful API for INLOCK (INLOCK.io) borrowing frontend. Default output is NON pretty printed JSON.
@@ -243,12 +243,12 @@ Getting request loan offers
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EGEN_dbresp_E001 / 
-* EBRW_notavail /
+* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
+* EBRW_notavail / Borrowing is not available right now. Please check back later!
 * EBRW_requnknown / Unknown offer request ID
-* EBRW_notoffer / 
-* EBRW_tmbuy_err /
-* EBRW_prio_nobalance /
+* EBRW_notoffer / Not an active loan offer
+* EBRW_tmbuy_err / Unable to buy ILK on tokenmarket
+* EBRW_prio_nobalance / Not enough balance to pay priority offer.
 
 
 # Private:rejectLoanOffers
@@ -285,7 +285,7 @@ Rejecting all loan offers
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
+* EBRW_notoffer / Not an active loan offer
 * EBRW_requnknown / Unknown offer request ID
 
 
@@ -340,10 +340,11 @@ Accepting loan offer
 ```
 
 **Error results**  
-* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_offunknown /
-* EBRW_notoffer /
+* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation
+* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
+* EBRW_notavail / Borrowing is not available right now. Please check back later!
+* EBRW_offunknown / Unknown offer ID
+* EBRW_notoffer / Not an active loan offer
 * EBRW_requnknown / Unknown offer request ID
 
 
@@ -396,8 +397,6 @@ Get running loans
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_requnknown / Unknown offer request ID
 
 
 # Private:getClosedLoans
@@ -449,8 +448,6 @@ Get closed loans
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_requnknown / Unknown offer request ID
 
 
 # Private:Private:getLoanDetails
@@ -517,8 +514,7 @@ Get running loans
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_requnknown / Unknown offer request ID
+* EBRW_unknown / Unknown loan ID
 
 
 # Private:repayLoan
@@ -559,7 +555,13 @@ Get running loans
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
+* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
+* EBRW_unknown / Unknown loan ID
+* EBRW_repay_001 / Invalid repay amount, at least 100 USDC is required!
+* EBRW_repay_002 / Not enough money to repay
+* EBRW_repay_003 / Loan is currently unavailable, try again later.
+* EBRW_notrunning / Not a running loan
+* EBRW_repaying / Repayment is being processed, please try again later.
 * EBRW_requnknown / Unknown offer request ID
 
 
@@ -600,9 +602,10 @@ Extension of loan term
 ```
 
 **Error results**  
-* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_requnknown / Unknown offer request ID
+* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation
+* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
+* EBRW_notavail / Borrowing is not available right now. Please check back later!
+
 
 
 # Private:terminateLoan
@@ -638,9 +641,10 @@ Terminate loan
 ```
 
 **Error results**  
-* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation  
-* EBRW_notavail /
-* EBRW_requnknown / Unknown offer request ID
+* EGEN_badreq_E001 / Bad request or missing field, please check the API documentation
+* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
+* EBRW_unknown / Unknown loan ID
+* EBRW_notrunning / Not a running loan
 
 
 # Private:getLoanContractEvents
@@ -748,5 +752,3 @@ if event `type` is `coll_hard_lock` or `coll_hard_unlock`
 
 **Error results**  
 * EGEN_badreq_E001 / Bad request or missing field, please check the API documentation
-* EGEN_dbresp_E001 / Backend's response is invalid, please contact support
-* ELEND_unknown / Unknown lend ID

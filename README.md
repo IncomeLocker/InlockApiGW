@@ -1,11 +1,11 @@
-# IncomeApiGW - Income Locker frontend Application Programable Interface 
-version: 0.1
+# IncomeApiGW - INLOCK.io frontend Application Programable Interface 
+version: 0.2
 
-RESTful API for Income Locker (inlock.io) frontend. Based on flask microframework. Default JSON output is 'pritty' printed, but you can switch to XML compressed output with "X-Requested-With: XMLHttpRequest" request header. Please use the compressed mode in normal cases!
+RESTful API for Income Locker (inlock.io) frontend. Based on wsgi microframework. Default JSON output is 'pretty' printed, but you can switch to XML compressed output with "X-Requested-With: XMLHttpRequest" request header. Please use the compressed mode in production cases!
 
 API categories:<br>
-<a href='#create-users-account' name='create-users-account'>User management (registration, login, etc.)</a><br>
-<a href='#list-collaterals' name='list-collaterals'>Collateral Inventory (preparation for contracting)</a><br>
+<a href='#create-users-account' name='create-users-account'>Access to APIGW (login, etc.)</a><br>
+<a href='https://github.com/IncomeLocker/InlockApiGW/blob/master/TokenMarket.md' name='list-collaterals'>Tokenmarket functions</a><br>
 Request handling<br>
 Offer handling (borrower side)<br>
 Offer accepting (borrower side)<br>
